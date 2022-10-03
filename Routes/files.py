@@ -51,18 +51,9 @@ def predict():
         file = request.files['file']
         file.save(PATH_FILE + file.filename)
         pathfile = (PATH_FILE + file.filename)
-        model_trained = tf.keras.models.load_model("C:/Users/josel/OneDrive/Escritorio/Server_Flask/App/saved_model.h5")
+        model_trained = tf.keras.models.load_model(getcwd() + "/saved_model.h5")
         prediction = categorizar(pathfile,model_trained)
         return response_json(str(prediction))
     except FileNotFoundError:
         return response_json("Folder not found", 404)
-    
-    
 
-
-
-    
-    
-    
-    
-      
